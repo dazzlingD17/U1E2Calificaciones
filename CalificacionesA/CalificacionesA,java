@@ -1,0 +1,98 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package calificacionesa;
+import java.util.Scanner;
+import Calculos.Calculos;
+/**
+ *
+ * @author dazz
+ */
+public class CalificacionesA {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+       
+        Scanner V = new Scanner(System.in);
+        String Nombre[] = {
+            "ARIAGNA ACEVEDO CAMPOS",
+            "MICHAEL HAZIEL AMBROCIO PEREZMICHAEL HAZIEL AMBROCIO PEREZ",
+            "VIANEY CELERINA AMBROSIO HERNANDEZVIANEY CELERINA AMBROSIO",
+            "JUAN PABLO CAMPOS CASASANEROJUAN PABLO CAMPOS CASASANERO",
+            "MARIANA DAZZLING DIAZ DE JESUSMARIANA DAZZLING DIAZ DE JESUS",
+            "ALEXIS EFREN DIAZ ROSASALEXIS EFREN DIAZ ROSAS	Estudiante",
+            "JENNIFER IRLANDA DOMINGUEZ CAZALESJENNIFER IRLANDA DOMINGUEZ CAZALES",
+            "MONSERRAT ELIGIO RAMOSMONSERRAT ELIGIO RAMOS",
+            "LILIANA FLORES MALDONADOLILIANA FLORES MALDONADO",
+            "EDGAR OMAR GOMEZ ARAGONEDGAR OMAR GOMEZ ARAGON",
+            "SAMARA GUTIERREZ VALLESAMARA GUTIERREZ VALLE",
+            "ALEXIS MANUEL JUAREZ RAMOSALEXIS MANUEL JUAREZ RAMOS",
+            "ROGELIO JESUS LEYVA SILVAROGELIO JESUS LEYVA SILVA",
+            "ISABEL MARTINEZ DE LOS SANTOSISABEL MARTINEZ DE LOS SANTOS",
+            "IRIS MADAI MARTINEZ RAYOIRIS MADAI MARTINEZ RAYO",
+           
+        };
+        int NoControl[] = {
+            18680056,
+            19680091,
+            19680092,
+            19680113,
+            19680133,
+            17680136,
+            18680108,
+            19680957,
+            19680144,
+            19680156,
+            19680162,
+            19680958,
+            19680177,
+            18680163,
+            18680165
+        };
+        double Calificacion[] = new double[Nombre.length];
+       
+        for (int i = 0; i < Calificacion.length; i++) {
+            do {
+                System.out.print("[" + (i + 1) + "] NUMERO DE CONTROL: " + NoControl[i]
+                        + "\n ALUMNO: " + Nombre[i] + "\n INSERTE CALIFICACION: ");
+                Calificacion[i] = V.nextDouble();
+                System.out.println("");
+            } while (Calificacion[i] < 0 || Calificacion[i] > 100);
+        }
+        Calculos metodo = new Calculos();
+ 
+        int opcion1, opcion2;
+        do {
+            opcion2 = 1;
+            System.out.println( "\n ELIGA UNA OPCION"
+                    + "\n[1]Promedio grupal"
+                    + "\n[2]Promedio de los primeros 5 alumnos"
+                    + "\n[3]Promedio de los ultimos 5 alumnos"
+                    + "\n[4]salir");
+            opcion1 = V.nextInt();
+            switch (opcion1) {
+                case 1:
+                    System.out.println("CALIFICACION GRUPAL: " + metodo.Prom(Calificacion));
+                    break;
+                case 2:
+                    metodo.Primeros(Calificacion);
+                    break;
+                case 3:
+                    metodo.Finales(Calificacion);
+                case 4:
+                    System.out.println("");
+                    break;
+            }
+            if (opcion1 != 4) {
+                System.out.println("Desea continuar [0]si/[1]no");
+                opcion2 = V.nextInt();
+            }
+        } while (opcion2 != 1);
+
+    }
+}
